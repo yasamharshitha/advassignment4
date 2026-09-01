@@ -45,6 +45,12 @@ const buildUrl = (domain) => (route) => (id) =>
 const fetchUser = buildUrl("api.github.com") ("users"); // ❌ Throws TypeError when called next!
 
 console.log(fetchUser(42));
+//The function buildUrl is a curried function that accepts one argument at a time. 
+// The developer incorrectly passed two arguments in the first call (buildUrl("api.github.com", "users")).
+//  Since JavaScript ignores extra arguments, only "api.github.com" is used, 
+// and the returned function still expects a route.
+//  This causes an arity (argument count) mismatch and breaks the intended invocation chain.
+
 
 
 
